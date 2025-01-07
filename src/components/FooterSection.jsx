@@ -1,7 +1,22 @@
 import { Box, Typography, Container, Link, TextField, Button, Grid } from "@mui/material";
 import { Facebook, Twitter, Instagram, LinkedIn } from '@mui/icons-material';
+import { useState } from 'react';
 
 const FooterSection = () => {
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
+
+  const handleSubscribe = () => {
+    if (!email) {
+      setError('Please enter a valid email address.');
+      return;
+    }
+    // Here you would typically send the email to your backend service
+    console.log(`Subscribed with email: ${email}`);
+    setEmail('');
+    setError('');
+  };
+
   return (
     <Box component="footer" sx={{ py: 4, backgroundColor: "#1976d2", color: "#fff", textAlign: "center" }}>
       <Container>
@@ -10,17 +25,17 @@ const FooterSection = () => {
         </Typography>
         
         <Box sx={{ mt: 2 }}>
-          <Link href="#" sx={{ mx: 1, color: "#fff", "&:hover": { textDecoration: "underline" } }}>Privacy Policy</Link>
-          <Link href="#" sx={{ mx: 1, color: "#fff", "&:hover": { textDecoration: "underline" } }}>Terms of Service</Link>
+          <Link href="#" sx={{ mx: 1, color: "#fff", "&:hover": { textDecoration: "underline" } }} aria-label="Privacy Policy">Privacy Policy</Link>
+          <Link href="#" sx={{ mx: 1, color: "#fff", "&:hover": { textDecoration: "underline" } }} aria-label="Terms of Service">Terms of Service</Link>
         </Box>
 
         <Box sx={{ mt: 4 }}>
           <Typography variant="h6" sx={{ mb: 2 }}>Stay Connected</Typography>
           <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
-            <Link href="#" sx={{ color: "#fff", mx: 1 }}><Facebook /></Link>
-            <Link href="#" sx={{ color: "#fff", mx: 1 }}><Twitter /></Link>
-            <Link href="#" sx={{ color: "#fff", mx: 1 }}><Instagram /></Link>
-            <Link href="#" sx={{ color: "#fff", mx: 1 }}><LinkedIn /></Link>
+            <Link href="#" sx={{ color: "#fff", mx: 1 }} aria-label="Facebook"><Facebook /></Link>
+            <Link href="#" sx={{ color: "#fff", mx: 1 }} aria-label="Twitter"><Twitter /></Link>
+            <Link href="#" sx={{ color: "#fff", mx: 1 }} aria-label="Instagram"><Instagram /></Link>
+            <Link href="#" sx={{ color: "#fff", mx: 1 }} aria-label="LinkedIn"><LinkedIn /></Link>
           </Box>
         </Box>
 
@@ -33,6 +48,11 @@ const FooterSection = () => {
                 placeholder="Enter your email" 
                 fullWidth 
                 sx={{ backgroundColor: "#fff", borderRadius: "4px" }} 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                aria-label="Email address for newsletter subscription"
+                error={!!error}
+                helperText={error}
               />
             </Grid>
             <Grid item xs={12} sm={4} md={2}>
@@ -41,6 +61,8 @@ const FooterSection = () => {
                 color="primary" 
                 fullWidth 
                 sx={{ textTransform: "uppercase" }}
+                onClick={handleSubscribe}
+                aria-label="Subscribe to newsletter"
               >
                 Subscribe
               </Button>

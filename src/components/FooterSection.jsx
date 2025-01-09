@@ -1,10 +1,16 @@
-import { Box, Typography, Container, Link, TextField, Button, Grid } from "@mui/material";
+import { Box, Typography, Container, Link, TextField, Button, Grid, Snackbar } from "@mui/material";
 import { Facebook, Twitter, Instagram, LinkedIn } from '@mui/icons-material';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import MuiAlert from '@mui/material/Alert';
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 const FooterSection = () => {
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
+  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const handleSubscribe = () => {
     if (!email) {
@@ -15,6 +21,11 @@ const FooterSection = () => {
     console.log(`Subscribed with email: ${email}`);
     setEmail('');
     setError('');
+    setOpenSnackbar(true); // Show success message
+  };
+
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
   };
 
   return (
@@ -70,6 +81,13 @@ const FooterSection = () => {
           </Grid>
         </Box>
       </Container>
+
+      {/* Snackbar for success message */}
+      <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleCloseSnackbar}>
+        <Alert onClose={handleCloseSnackbar} severity="success" sx={{ width: '100%' }}>
+          Thank you for subscribing!
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };

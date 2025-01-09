@@ -22,7 +22,18 @@ const WhyChooseUsSection = () => {
   };
 
   return (
-    <Container component="section" sx={{ py: 8, textAlign: "center", backgroundColor: "#e3f2fd", borderRadius: "8px", boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }}>
+    <Container 
+      component="section" 
+      sx={{ 
+        py: 8, 
+        textAlign: "center", 
+        backgroundColor: "#e3f2fd", 
+        borderRadius: "8px", 
+        boxShadow: "0 4px 20px rgba(0,0,0,0.1)", 
+        maxWidth: { xs: '90%', sm: '80%', md: '70%', lg: '100%' }, // Adjust maxWidth for responsiveness
+        mx: "auto" // Center the container
+      }}
+    >
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -40,9 +51,10 @@ const WhyChooseUsSection = () => {
                 initial="hidden"
                 whileInView="visible"
                 custom={index}
+                style={{ display: 'flex', alignItems: 'center' }} // Ensure icon and text are centered
               >
                 <CheckCircleIcon sx={{ color: "#1976d2", marginRight: 1 }} />
-                <Typography variant="body1" sx={{ fontSize: "1.2rem", color: "#333" }}>
+                <Typography variant="body1" sx={{ fontSize: "1.2rem", color: "#333", lineHeight: 1.5 }}>
                   {benefit}
                 </Typography>
               </motion.div>

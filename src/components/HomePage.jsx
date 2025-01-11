@@ -1,6 +1,6 @@
 // src/components/HomePage.jsx
 
-import HeroSection from './HeroSection';
+import HeroSection from './Hero/HeroSection';
 import AboutUsSection from './AboutUsSection';
 import ServicesSection from './ServicesSection';
 import PortfolioSection from './PortfolioSection';

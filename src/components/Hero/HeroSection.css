@@ -1,0 +1,12 @@
+/* HeroSection.css */
+.hero-section {
+    background-image: url('/assets/hero-background.jpg.png'); 
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white; /* Text color for contrast */
+    text-align: center;
+  }

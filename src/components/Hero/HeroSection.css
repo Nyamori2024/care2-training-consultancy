@@ -1,6 +1,6 @@
 /* HeroSection.css */
 .hero-section {
-    background-image: url('/assets/hero-background.jpg.png'); 
+    background-image: url('/assets/hero-background.webp'); 
     background-size: cover;
     background-position: center;
     height: 100vh; /* Full viewport height */

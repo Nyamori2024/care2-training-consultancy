@@ -13,7 +13,7 @@ const HeroSection = () => {
         justifyContent: "center",
         alignItems: "center",
         textAlign: "center",
-        backgroundImage: "url('./src/assets/hero-background.jpg.png')", // Adjust path if using public
+        backgroundImage: "url('./public/assets/hero-background.webp')", // Adjust path if using public
         backgroundSize: "cover",
         backgroundPosition: "center",
         position: "relative",

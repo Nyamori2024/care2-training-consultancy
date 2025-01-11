@@ -1,4 +1,4 @@
-import { Typography, Container, List, ListItem, Box, Button } from "@mui/material";
+import { Typography, Container, Grid, Box, Button } from "@mui/material";
 import { motion } from "framer-motion";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
@@ -43,24 +43,24 @@ const WhyChooseUsSection = () => {
         <Typography variant="h4" sx={{ fontWeight: "bold", mb: 4 }}>
           Why Choose Us?
         </Typography>
-        <List sx={{ listStyleType: "none", padding: 0 }}>
+        <Grid container spacing={4}>
           {benefits.map((benefit, index) => (
-            <ListItem key={index} sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+            <Grid item xs={12} sm={6} key={index}> {/* Two columns on small screens and above */}
               <motion.div
                 variants={itemVariants}
                 initial="hidden"
                 whileInView="visible"
                 custom={index}
-                style={{ display: 'flex', alignItems: 'center' }} // Ensure icon and text are centered
+                style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }} // Center icon and text
               >
                 <CheckCircleIcon sx={{ color: "#1976d2", marginRight: 1 }} />
                 <Typography variant="body1" sx={{ fontSize: "1.2rem", color: "#333", lineHeight: 1.5 }}>
                   {benefit}
                 </Typography>
               </motion.div>
-            </ListItem>
+            </Grid>
           ))}
-        </List>
+        </Grid>
         <Box sx={{ mt: 4 }}>
           <Button 
             variant="contained" 

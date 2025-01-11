@@ -11,7 +11,7 @@ import {
   ListItemText,
   Box,
 } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { Link as ScrollLink } from "react-scroll"; // Import Link from react-scroll
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
 
@@ -26,18 +26,17 @@ const Navbar = () => {
   };
 
   const menuItems = [
-    { text: "Home", path: "/" },
-    { text: "Services", path: "/services" },
-    { text: "About", path: "/about" },
-    { text: "Portfolio", path: "/portfolio" },
-    { text: "Contact", path: "/contact" },
+    { text: "Home", path: "hero" },
+    { text: "About", path: "about" },
+    { text: "Services", path: "services" },
+    { text: "Portfolio", path: "portfolio" },
+    { text: "Contact", path: "contact" },
   ];
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "#1976d2" }}>
+    <AppBar position="fixed" sx={{ backgroundColor: "#1976d2" }}> {/* Changed to fixed */}
       <Container>
         <Toolbar>
-          {/* Mobile Menu Icon */}
           <IconButton
             edge="start"
             color="inherit"
@@ -48,50 +47,51 @@ const Navbar = () => {
             <MenuIcon />
           </IconButton>
 
-          {/* Logo */}
           <Typography variant="h6" sx={{ flexGrow: 1, color: "#ffffff" }}>
             Care2 Training Consultancy
           </Typography>
 
-          {/* Desktop Menu */}
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             {menuItems.map((item) => (
-              <NavLink
+              <ScrollLink
                 key={item.text}
                 to={item.path}
+                smooth={true} // Enable smooth scrolling
+                duration={500} // Duration of the scroll
                 style={{ textDecoration: "none" }}
               >
                 <Button
                   color="inherit"
                   sx={{
-                    color: "#ffffff", // White text color
-                    "&:hover": { backgroundColor: "#1565c0", color: "#ffeb3b" }, // Hover effect
+                    color: "#ffffff",
+                    "&:hover": { backgroundColor: "#1565c0", color: "#ffeb3b" },
                     mx: 1,
                   }}
                 >
                   {item.text}
                 </Button>
-              </NavLink>
+              </ScrollLink>
             ))}
           </Box>
         </Toolbar>
       </Container>
 
-      {/* Drawer for Mobile Menu */}
       <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
         <List>
           {menuItems.map((item) => (
             <ListItem
               button
               key={item.text}
-              component={NavLink}
+              component={ScrollLink} // Use ScrollLink for mobile menu
               to={item.path}
               onClick={toggleDrawer(false)}
+              smooth={true}
+              duration={500}
               sx={{
                 "&.active": {
                   backgroundColor: "#e3f2fd",
                 },
-                color: "#1976d2", // Dark blue text for mobile menu
+                color: "#1976d2",
               }}
             >
               <ListItemText primary={item.text} />

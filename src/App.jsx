@@ -1,10 +1,11 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import FormProvider from "./contexts/FormProvider";
 import Navbar from "./components/Navbar";
-import HeroSection from "./components/HeroSection";
+import HomePage from "./components/HomePage"; // Import the new HomePage component
 import AboutUsSection from "./components/AboutUsSection";
 import ServicesSection from "./components/ServicesSection";
-import WhyChooseUsSection from "./components/WhyChooseUsSection";
+import ServiceDetail from "./components/ServiceDetail"; // Import the ServiceDetail component
+import PortfolioSection from "./components/PortfolioSection"; // Ensure this file exists
 import ContactFormSection from "./components/ContactFormSection";
 import FooterSection from "./components/FooterSection";
 
@@ -13,11 +14,14 @@ const App = () => {
     <BrowserRouter>  {/* Wrapping the app with BrowserRouter */}
       <FormProvider>
         <Navbar />
-        <HeroSection />
-        <AboutUsSection />
-        <ServicesSection />
-        <WhyChooseUsSection />
-        <ContactFormSection />
+        <Routes>
+          <Route path="/" element={<HomePage />} /> {/* Updated to use HomePage */}
+          <Route path="/about" element={<AboutUsSection />} />
+          <Route path="/services" element={<ServicesSection />} />
+          <Route path="/service/:serviceId" element={<ServiceDetail />} /> {/* Route for service details */}
+          <Route path="/portfolio" element={<PortfolioSection />} />
+          <Route path="/contact" element={<ContactFormSection />} />
+        </Routes>
         <FooterSection />
       </FormProvider>
     </BrowserRouter>

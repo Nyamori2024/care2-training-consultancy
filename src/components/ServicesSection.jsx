@@ -1,6 +1,6 @@
-
 import { Box, Grid, Card, CardContent, Typography, Button } from "@mui/material";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 const services = [
   {
@@ -40,7 +40,12 @@ const ServicesSection = () => {
                   <Typography variant="body2" sx={{ my: 2 }}>
                     {service.description}
                   </Typography>
-                  <Button variant="contained" size="small">
+                  <Button 
+                    variant="contained" 
+                    size="small" 
+                    component={Link} // Use Link to navigate
+                    to={`/service/${index}`} // Navigate to the service detail page
+                  >
                     Learn More
                   </Button>
                 </CardContent>

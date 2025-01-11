@@ -9,6 +9,7 @@ import ServiceDetail from "./components/ServiceDetail"; // Import the ServiceDet
 import GetStarted from "./components/GetStarted"; // Import the GetStarted component
 import PortfolioSection from "./components/PortfolioSection"; // Ensure this file exists
 import ContactFormSection from "./components/ContactFormSection";
+import LearnMore from "./components/LearnMore"; // Import the LearnMore component
 import FooterSection from "./components/FooterSection";
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/services" element={<ServicesSection />} />
           <Route path="/service/:serviceId" element={<ServiceDetail />} /> {/* Route for service details */}
           <Route path="/get-started" element={<GetStarted />} /> {/* Route for GetStarted */}
+          <Route path="/learn-more" element={<LearnMore />} /> {/* Route for LearnMore */}
           <Route path="/portfolio" element={<PortfolioSection />} />
           <Route path="/contact" element={<ContactFormSection />} />
         </Routes>

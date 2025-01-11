@@ -13,7 +13,7 @@ const GetStarted = () => {
         backgroundColor: "#f5f5f5",
       }}
     >
-      <Typography variant="h4" sx={{ mb: 4, fontWeight: "bold" }}>
+      <Typography variant="h4" sx={{ mb: 4, mt:4, fontWeight: "bold" }}>
         Get Started with Us
       </Typography>
       <Typography variant="body1" sx={{ mb: 4 }}>

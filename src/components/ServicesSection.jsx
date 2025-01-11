@@ -43,8 +43,8 @@ const ServicesSection = () => {
                   <Button 
                     variant="contained" 
                     size="small" 
-                    component={Link} // Use Link to navigate
-                    to={`/service/${index}`} // Navigate to the service detail page
+                    component={Link}  // Use Link to navigate
+                    to={`/service/${index}`}  // Navigate to the service detail page
                   >
                     Learn More
                   </Button>

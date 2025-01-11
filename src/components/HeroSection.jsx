@@ -1,6 +1,7 @@
-
+// HeroSection.jsx
 import { Box, Typography, Button } from "@mui/material";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 const HeroSection = () => {
   return (
@@ -45,6 +46,8 @@ const HeroSection = () => {
           color="primary"
           size="large"
           sx={{ textTransform: "uppercase" }}
+          component={Link} // Use Link to navigate
+          to="/get-started" // Navigate to the GetStarted component
         >
           Get Started
         </Button>

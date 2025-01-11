@@ -1,3 +1,4 @@
+// ServiceDetail.jsx
 
 import { useParams } from 'react-router-dom';
 import { Typography, Container } from "@mui/material";
@@ -18,8 +19,12 @@ const serviceDetails = [
 ];
 
 const ServiceDetail = () => {
-  const { serviceId } = useParams();
-  const service = serviceDetails[serviceId];
+  const { serviceId } = useParams(); // Get the serviceId from the URL
+  const service = serviceDetails[serviceId]; // Access the corresponding service details
+
+  if (!service) {
+    return <Typography variant="h6">Service not found.</Typography>; // Handle case where serviceId is invalid
+  }
 
   return (
     <Container>

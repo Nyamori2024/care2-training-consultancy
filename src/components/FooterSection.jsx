@@ -49,10 +49,22 @@ const FooterSection = () => {
           <Box sx={{ mt: 4 }}>
             <Typography variant="h6" sx={{ mb: 2 }}>Stay Connected</Typography>
             <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
-              <Link href="#" sx={{ color: "#fff", mx: 1 }} aria-label="Facebook"><Facebook /></Link>
-              <Link href="#" sx={{ color: "#fff", mx: 1 }} aria-label="Twitter"><Twitter /></Link>
-              <Link href="#" sx={{ color: "#fff", mx: 1 }} aria-label="Instagram"><Instagram /></Link>
-              <Link href="#" sx={{ color: "#fff", mx: 1 }} aria-label="LinkedIn"><LinkedIn /></Link>
+              {[
+                { icon: <Facebook />, label: "Facebook" },
+                { icon: <Twitter />, label: "Twitter" },
+                { icon: <Instagram />, label: "Instagram" },
+                { icon: <LinkedIn />, label: "LinkedIn" }
+              ].map(({ icon, label }, index) => (
+                <motion.div
+                  key={index}
+                  whileHover={{ scale: 1.2 }} // Scale up on hover
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <Link href="#" sx={{ color: "#fff", mx: 1 }} aria-label={label}>
+                    {icon}
+                  </Link>
+                </motion.div>
+              ))}
             </Box>
           </Box>
 

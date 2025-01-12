@@ -1,7 +1,6 @@
-// ServiceDetail.jsx
-
 import { useParams } from 'react-router-dom';
 import { Typography, Container } from "@mui/material";
+import { motion } from "framer-motion";
 
 const serviceDetails = [
   {
@@ -28,8 +27,14 @@ const ServiceDetail = () => {
 
   return (
     <Container>
-      <Typography variant="h4">{service.title}</Typography>
-      <Typography variant="body1">{service.description}</Typography>
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }} 
+        animate={{ opacity: 1, y: 0 }} 
+        transition={{ duration: 0.5 }}
+      >
+        <Typography variant="h4">{service.title}</Typography>
+        <Typography variant="body1">{service.description}</Typography>
+      </motion.div>
     </Container>
   );
 };

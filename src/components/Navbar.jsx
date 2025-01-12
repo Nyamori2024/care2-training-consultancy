@@ -11,9 +11,10 @@ import {
   ListItemText,
   Box,
 } from "@mui/material";
-import { Link as ScrollLink } from "react-scroll"; // Import Link from react-scroll
+import { Link as ScrollLink } from "react-scroll";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useState } from "react";
+import { useState, memo } from "react";
+import { motion } from "framer-motion"; // Add this import
 
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -34,7 +35,14 @@ const Navbar = () => {
   ];
 
   return (
-    <AppBar position="fixed" sx={{ backgroundColor: "#1976d2" }}> {/* Changed to fixed */}
+    <AppBar
+      position="fixed"
+      sx={{ backgroundColor: "#1976d2" }}
+      component={motion.div}
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <Container>
         <Toolbar>
           <IconButton
@@ -56,8 +64,8 @@ const Navbar = () => {
               <ScrollLink
                 key={item.text}
                 to={item.path}
-                smooth={true} // Enable smooth scrolling
-                duration={500} // Duration of the scroll
+                smooth={true}
+                duration={500}
                 style={{ textDecoration: "none" }}
               >
                 <Button
@@ -76,13 +84,21 @@ const Navbar = () => {
         </Toolbar>
       </Container>
 
-      <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
+      <Drawer
+        anchor="left"
+        open={drawerOpen}
+        onClose={toggleDrawer(false)}
+        component={motion.div}
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.3 }}
+      >
         <List>
           {menuItems.map((item) => (
             <ListItem
               button
               key={item.text}
-              component={ScrollLink} // Use ScrollLink for mobile menu
+              component={ScrollLink}
               to={item.path}
               onClick={toggleDrawer(false)}
               smooth={true}
@@ -103,4 +119,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default memo(Navbar);

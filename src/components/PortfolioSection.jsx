@@ -1,15 +1,14 @@
-// WhyChooseUsSection.jsx
 import { Typography, Container, Grid, Box, Button } from "@mui/material";
 import { motion } from "framer-motion";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
+import React, { useEffect } from "react"; // Import useEffect for side effects
 
 const WhyChooseUsSection = () => {
   const navigate = useNavigate(); // Use useNavigate hook for navigation
 
   const handleLearnMore = () => {
     navigate("/learn-more"); // Navigate to the LearnMore component
-    window.scrollTo(0, 0); // Scroll to the top of the page
   };
 
   const benefits = [
@@ -29,6 +28,11 @@ const WhyChooseUsSection = () => {
       transition: { delay: i * 0.2 }, // Staggered delay
     }),
   };
+
+  // Effect to scroll to top when the component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []); // Empty dependency array ensures this runs once on mount
 
   return (
     <Container 
@@ -75,7 +79,7 @@ const WhyChooseUsSection = () => {
             variant="contained" 
             color="primary" 
             size="large" 
-            onClick={handleLearnMore} // Use onClick to handle navigation and scroll
+            onClick={handleLearnMore} // Use onClick to handle navigation
             sx={{ 
               textTransform: "uppercase", 
               "&:hover": { 
@@ -97,4 +101,4 @@ const WhyChooseUsSection = () => {
   );
 };
 
-export default WhyChooseUsSection;
+export default React.memo(WhyChooseUsSection); // Prevent unnecessary re-renders

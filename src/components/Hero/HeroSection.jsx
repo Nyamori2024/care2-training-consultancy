@@ -1,8 +1,7 @@
 import { Box, Typography, Button } from "@mui/material";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import './HeroSection.css';
-
+import React from "react";
 const HeroSection = () => {
   return (
     <Box
@@ -13,7 +12,7 @@ const HeroSection = () => {
         justifyContent: "center",
         alignItems: "center",
         textAlign: "center",
-        backgroundImage: "url('./public/assets/hero-background.webp')", // Adjust path if using public
+        backgroundImage: "url('./assets/hero-background.webp')", // Ensure the path is correct
         backgroundSize: "cover",
         backgroundPosition: "center",
         position: "relative",
@@ -74,4 +73,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default React.memo(HeroSection); // Prevent unnecessary re-renders

@@ -2,6 +2,7 @@ import { Box, TextField, Button, Container, Typography, Paper, Snackbar } from "
 import MuiAlert from '@mui/material/Alert';
 import useFormContext from "../hooks/useFormContext";
 import React, { useState } from 'react';
+import { motion } from "framer-motion";
 
 // Alert component for Snackbar notifications
 const Alert = React.forwardRef(function Alert(props, ref) {
@@ -60,61 +61,67 @@ const ContactFormSection = () => {
 
   return (
     <Container component="section" sx={{ py: 8 }}>
-      <Typography variant="h4" sx={{ mb: 4, textAlign: "center", fontWeight: "bold", color: "#1976d2" }}>
-        Contact Us
-      </Typography>
-      <Paper elevation={3} sx={{ padding: 4, borderRadius: 2, maxWidth: 600, mx: "auto" }}>
-        <Box component="form" onSubmit={handleFormSubmit}>
-          <TextField
-            fullWidth
-            label="Name"
-            variant="outlined"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            sx={{ mb: 3 }}
-            required
-            error={!!nameError} // Show error state if there's a name error
-            helperText={nameError} // Display name error message if applicable
-          />
-          <TextField
-            fullWidth
-            label="Email"
-            variant="outlined"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            sx={{ mb: 3 }}
-            required
-            error={!!emailError} // Show error state if there's an email error
-            helperText={emailError} // Display email error message if applicable
-          />
-          <TextField
-            fullWidth
-            label="Message"
-            variant="outlined"
-            name="message"
-            multiline
-            rows={4}
-            value={formData.message}
-            onChange={handleChange}
-            sx={{ mb: 3 }}
-            required
-            error={!!messageError} // Show error state if there's a message error
-            helperText={messageError} // Display message error message if applicable
-          />
-          <Button 
-            variant="contained" 
-            color="primary" 
-            size="large" 
-            fullWidth 
-            type="submit"
-            sx={{ "&:hover": { backgroundColor: "#1565c0" } }} // Darker shade on hover
-          >
-            Send Message
-          </Button>
-        </Box>
-      </Paper>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <Typography variant="h4" sx={{ mb: 4, textAlign: "center", fontWeight: "bold", color: "#1976d2" }}>
+          Contact Us
+        </Typography>
+        <Paper elevation={3} sx={{ padding: 4, borderRadius: 2, maxWidth: 600, mx: "auto" }}>
+          <Box component="form" onSubmit={handleFormSubmit}>
+            <TextField
+              fullWidth
+              label="Name"
+              variant="outlined"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              sx={{ mb: 3 }}
+              required
+              error={!!nameError} // Show error state if there's a name error
+              helperText={nameError} // Display name error message if applicable
+            />
+            <TextField
+              fullWidth
+              label="Email"
+              variant="outlined"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              sx={{ mb: 3 }}
+              required
+              error={!!emailError} // Show error state if there's an email error
+              helperText={emailError} // Display email error message if applicable
+            />
+            <TextField
+              fullWidth
+              label="Message"
+              variant="outlined"
+              name="message"
+              multiline
+              rows={4}
+              value={formData.message}
+              onChange={handleChange}
+              sx={{ mb: 3 }}
+              required
+              error={!!messageError} // Show error state if there's a message error
+              helperText={messageError} // Display message error message if applicable
+            />
+            <Button 
+              variant="contained" 
+              color="primary" 
+              size="large" 
+              fullWidth 
+              type="submit"
+              sx={{ "&:hover": { backgroundColor: "#1565c0" } }} // Darker shade on hover
+            >
+              Send Message
+            </Button>
+          </Box>
+        </Paper>
+      </motion.div>
 
       {/* Snackbar for success message */}
       <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleCloseSnackbar}>
@@ -126,4 +133,4 @@ const ContactFormSection = () => {
   );
 };
 
-export default ContactFormSection;
+export default React.memo(ContactFormSection); // Prevent unnecessary re-renders

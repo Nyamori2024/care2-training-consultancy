@@ -1,12 +1,19 @@
-/* HeroSection.css */
 .hero-section {
-    background-image: url('/assets/hero-background.webp'); 
-    background-size: cover;
-    background-position: center;
-    height: 100vh; /* Full viewport height */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white; /* Text color for contrast */
-    text-align: center;
+  background-image: url('/assets/hero-background.webp'); 
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white; /* Text color for contrast */
+  text-align: center;
+  opacity: 0; /* Start hidden */
+  animation: fadeIn 1s ease-in-out forwards; /* Fade-in animation */
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
   }
+}

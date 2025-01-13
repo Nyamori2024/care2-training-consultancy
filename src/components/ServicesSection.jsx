@@ -1,8 +1,6 @@
-// ServicesSection.jsx
 import { Box, Grid, Card, CardContent, Typography, Button } from "@mui/material";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { memo } from 'react';
 
 const services = [
   {
@@ -21,13 +19,7 @@ const services = [
 
 const ServicesSection = () => {
   return (
-    <Box component={motion.section} 
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      sx={{ py: 8, textAlign: "center" }}
-    >
+    <Box component="section" sx={{ py: 8, textAlign: "center" }}>
       <Typography variant="h4" sx={{ mb: 4, fontWeight: "bold" }}>
         Our Services
       </Typography>
@@ -66,4 +58,4 @@ const ServicesSection = () => {
   );
 };
 
-export default memo(ServicesSection); // Prevent unnecessary re-renders
+export default ServicesSection;

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import HeroSection from './Hero/HeroSection';
 import AboutUsSection from './AboutUsSection';
@@ -9,55 +8,59 @@ import { Box } from "@mui/material";
 import { motion } from "framer-motion";
 
 const HomePage = () => {
+  // Define animation variants for staggered loading
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3, // Delay between each child animation
+      },
+    },
+  };
+
+  const childVariants = {
+    hidden: { opacity: 0, y: -20 }, // Start slightly above and invisible
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }, // Slide down and fade in
+  };
+
   return (
     <Box>
+      {/* Motion container to control staggered animations */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
       >
-        <div id="hero">
-          <HeroSection />
-        </div>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-      >
-        <div id="about">
-          <AboutUsSection />
-        </div>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-      >
-        <div id="services">
-          <ServicesSection />
-        </div>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.6 }}
-      >
-        <div id="portfolio">
-          <PortfolioSection />
-        </div>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.8 }}
-      >
-        <div id="contact">
-          <ContactFormSection />
-        </div>
+        {/* Each section is a child with its own animation */}
+        <motion.div variants={childVariants}>
+          <div id="hero">
+            <HeroSection />
+          </div>
+        </motion.div>
+        <motion.div variants={childVariants}>
+          <div id="about">
+            <AboutUsSection />
+          </div>
+        </motion.div>
+        <motion.div variants={childVariants}>
+          <div id="services">
+            <ServicesSection />
+          </div>
+        </motion.div>
+        <motion.div variants={childVariants}>
+          <div id="portfolio">
+            <PortfolioSection />
+          </div>
+        </motion.div>
+        <motion.div variants={childVariants}>
+          <div id="contact">
+            <ContactFormSection />
+          </div>
+        </motion.div>
       </motion.div>
     </Box>
   );
 };
 
-export default React.memo(HomePage); // Prevent unnecessary re-renders
+export default React.memo(HomePage);

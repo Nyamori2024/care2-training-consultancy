@@ -1,61 +1,60 @@
-import { Box, Grid, Card, CardContent, Typography, Button } from "@mui/material"; // Import Material-UI components
-import { motion } from "framer-motion"; // Import motion for animations
-import { Link } from "react-router-dom"; // Import Link for navigation
-import { serviceDetails } from "../data/serviceData"; // Import service details data
+import { Box, Grid, Card, CardContent, Typography, Button } from "@mui/material";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { serviceDetails } from "../data/serviceData";
 
 const Services = () => {
-  // Function to scroll to the top of the page
   const handleScrollToTop = () => {
-    window.scrollTo(0, 0); // Scroll to the top of the window
+    window.scrollTo(0, 0);
   };
 
   return (
     <Box component="section" sx={{ py: 8, textAlign: "center" }}>
       <Typography variant="h4" sx={{ mb: 4, fontWeight: "bold" }}>
-        Our Services // Section title
+        Our Services
       </Typography>
-      <Grid container spacing={4}> // Grid layout for services
-        {serviceDetails.map((service, index) => ( // Map through service details
-          <Grid item xs={12} sm={6} md={4} key={index}> // Responsive grid item
+      <Grid container spacing={4}>
+        {serviceDetails.map((service, index) => (
+          <Grid item xs={12} sm={6} md={4} key={index}>
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }} // Initial animation state
-              whileInView={{ opacity: 1, scale: 1 }} // Animation state when in view
-              viewport={{ once: true }} // Animation triggers only once
-              transition={{ duration: 0.5, delay: index * 0.2 }} // Animation duration and delay
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
             >
               <Card
                 sx={{
                   textAlign: "left",
                   height: "100%",
-                  transition: "0.3s", // Transition for hover effect
-                  "&:hover": { boxShadow: "0 4px 20px rgba(0,0,0,0.2)" }, // Hover effect
+                  transition: "0.3s",
+                  "&:hover": { boxShadow: "0 4px 20px rgba(0,0,0,0.2)" },
                 }}
               >
                 <CardContent>
                   <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-                    {service.title} // Display the service title
+                    {service.title}
                   </Typography>
                   <Typography variant="body2" sx={{ my: 2 }}>
-                    {service.description} // Display the service description
+                    {service.description}
                   </Typography>
                   <Button
                     variant="contained"
                     size="small"
                     component={Link}
-                    to={`/service/${index}`} // Link to the service detail page
-                    onClick={handleScrollToTop} // Scroll to top on click
-                    sx={{ mt: 2 }} // Added spacing
-                  >
-                    Learn More // Button text
-                  </Button>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </Grid>
-        ))}
-      </Grid>
-    </Box>
+                    to={`/service/${index}`}
+                  onClick={handleScrollToTop} // Scroll to top on click
+                  sx={{ mt: 2 }} // Added spacing
+                >
+                  Learn More
+                </Button>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </Grid>
+      ))}
+    </Grid>
+  </Box>
   );
 };
 
-export default Services; // Export the component
+export default Services;

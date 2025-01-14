@@ -4,15 +4,17 @@ import React, { useState } from 'react';
 import MuiAlert from '@mui/material/Alert';
 import { motion } from "framer-motion";
 
+// Alert component for Snackbar notifications
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-const FooterSection = () => {
-  const [email, setEmail] = useState('');
-  const [error, setError] = useState('');
-  const [openSnackbar, setOpenSnackbar] = useState(false);
+const Footer = () => {
+  const [email, setEmail] = useState(''); // State to manage email input
+  const [error, setError] = useState(''); // State to manage email errors
+  const [openSnackbar, setOpenSnackbar] = useState(false); // State to manage Snackbar visibility
 
+  // Function to handle email subscription
   const handleSubscribe = () => {
     if (!email) {
       setError('Please enter a valid email address.');
@@ -25,6 +27,7 @@ const FooterSection = () => {
     setOpenSnackbar(true); // Show success message
   };
 
+  // Function to close the Snackbar
   const handleCloseSnackbar = () => {
     setOpenSnackbar(false);
   };
@@ -111,4 +114,4 @@ const FooterSection = () => {
   );
 };
 
-export default React.memo(FooterSection); // Prevent unnecessary re-renders
+export default React.memo(Footer); // Prevent unnecessary re-renders

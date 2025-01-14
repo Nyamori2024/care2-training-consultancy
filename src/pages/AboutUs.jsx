@@ -2,7 +2,7 @@ import { Typography, Container } from "@mui/material";
 import { motion } from "framer-motion";
 import React from "react";
 
-const AboutUsSection = () => {
+const AboutUs = () => {
   return (
     <Container component="section" sx={{ py: 8, textAlign: "center" }}>
       <motion.div
@@ -31,4 +31,4 @@ const AboutUsSection = () => {
   );
 };
 
-export default React.memo(AboutUsSection); // Prevent unnecessary re-renders
+export default React.memo(AboutUs); // Prevent unnecessary re-renders

@@ -1,4 +1,3 @@
-// src/contexts/FormProvider.jsx
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { FormContext } from "./FormContext";
@@ -19,7 +18,9 @@ export const FormProvider = ({ children }) => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault(); // Prevent default form submission
+    }
     console.log("Form submitted:", formData);
     setFormData({ name: "", email: "", message: "" });
   };

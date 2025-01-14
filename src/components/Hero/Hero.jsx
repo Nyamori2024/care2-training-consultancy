@@ -3,13 +3,17 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 
-const HeroSection = () => {
+const Hero = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageSrc, setImageSrc] = useState("/assets/hero-background-placeholder.webp"); // Placeholder image
 
   useEffect(() => {
     const img = new Image();
-    img.src = "/assets/hero-background.webp"; // Ensure the path is correct
-    img.onload = () => setImageLoaded(true);
+    img.src = "/assets/hero-background.webp"; 
+    img.onload = () => {
+      setImageSrc("/assets/hero-background.webp"); // Set the actual image source
+      setImageLoaded(true);
+    };
   }, []);
 
   return (
@@ -22,7 +26,7 @@ const HeroSection = () => {
         alignItems: "center",
         textAlign: "center",
         position: "relative",
-        backgroundImage: imageLoaded ? "url('/assets/hero-background.webp')" : "none",
+        backgroundImage: imageLoaded ? `url('${imageSrc}')` : "none",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundColor: imageLoaded ? "transparent" : "#222", // Fallback background color
@@ -49,11 +53,11 @@ const HeroSection = () => {
           {/* Loading Spinner */}
           <CircularProgress color="primary" />
           <Typography
-            variant="h6"
+            variant="h5" // Larger text variant
             sx={{
               mt: 2,
               color: "#fff",
-              fontSize: { xs: "1rem", sm: "1.25rem" },
+              fontSize: { xs: "1.5rem", sm: "2rem" }, // Bigger font size
             }}
           >
             Loading...
@@ -86,6 +90,8 @@ const HeroSection = () => {
               mb: 2,
               fontSize: { xs: "2rem", sm: "3rem", md: "4rem" },
               color: "#fff",
+              textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)", // Added text shadow for better readability
+              padding: "0 20px", // Added padding for better spacing
             }}
           >
             Achieve Your Dreams Abroad
@@ -96,6 +102,7 @@ const HeroSection = () => {
               mb: 4,
               color: "#fff",
               fontSize: { xs: "1rem", sm: "1.25rem" },
+              textShadow: "1px 1px 2px rgba(0, 0, 0, 0.7)", // Added text shadow for better readability
             }}
           >
             We help students and professionals navigate visa applications, study opportunities, and work placements.
@@ -117,4 +124,4 @@ const HeroSection = () => {
   );
 };
 
-export default React.memo(HeroSection);
+export default React.memo(Hero);

@@ -9,7 +9,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-const ContactFormSection = () => {
+const ContactForm = () => {
   const { formData, handleChange, handleSubmit } = useFormContext();
   const [emailError, setEmailError] = useState('');
   const [nameError, setNameError] = useState('');
@@ -66,10 +66,27 @@ const ContactFormSection = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <Typography variant="h4" sx={{ mb: 4, textAlign: "center", fontWeight: "bold", color: "#1976d2" }}>
+        <Typography 
+          variant="h4" 
+          sx={{ 
+            mb: 4, 
+            textAlign: "center", 
+            fontWeight: "bold", 
+            color: "#1976d2" // Blue for trust and professionalism
+          }}
+        >
           Contact Us
         </Typography>
-        <Paper elevation={3} sx={{ padding: 4, borderRadius: 2, maxWidth: 600, mx: "auto" }}>
+        <Paper 
+          elevation={3} 
+          sx={{ 
+            padding: 4, 
+            borderRadius: 2, 
+            maxWidth: 600, 
+            mx: "auto", 
+            backgroundColor: "#f5f5f5" // Light gray for balance
+          }}
+        >
           <Box component="form" onSubmit={handleFormSubmit}>
             <TextField
               fullWidth
@@ -80,8 +97,8 @@ const ContactFormSection = () => {
               onChange={handleChange}
               sx={{ mb: 3 }}
               required
-              error={!!nameError} // Show error state if there's a name error
-              helperText={nameError} // Display name error message if applicable
+              error={!!nameError}
+              helperText={nameError}
             />
             <TextField
               fullWidth
@@ -92,8 +109,8 @@ const ContactFormSection = () => {
               onChange={handleChange}
               sx={{ mb: 3 }}
               required
-              error={!!emailError} // Show error state if there's an email error
-              helperText={emailError} // Display email error message if applicable
+              error={!!emailError}
+              helperText={emailError}
             />
             <TextField
               fullWidth
@@ -106,8 +123,8 @@ const ContactFormSection = () => {
               onChange={handleChange}
               sx={{ mb: 3 }}
               required
-              error={!!messageError} // Show error state if there's a message error
-              helperText={messageError} // Display message error message if applicable
+              error={!!messageError}
+              helperText={messageError}
             />
             <Button 
               variant="contained" 
@@ -115,7 +132,9 @@ const ContactFormSection = () => {
               size="large" 
               fullWidth 
               type="submit"
-              sx={{ "&:hover": { backgroundColor: "#1565c0" } }} // Darker shade on hover
+              sx={{ 
+                "&:hover": { backgroundColor: "#1565c0" } // Darker blue for hover
+              }}
             >
               Send Message
             </Button>
@@ -133,4 +152,4 @@ const ContactFormSection = () => {
   );
 };
 
-export default React.memo(ContactFormSection); // Prevent unnecessary re-renders
+export default React.memo(ContactForm); // Prevent unnecessary re-renders

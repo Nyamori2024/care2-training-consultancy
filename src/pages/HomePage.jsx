@@ -1,9 +1,9 @@
 import React from 'react';
-import HeroSection from './Hero/HeroSection';
-import AboutUsSection from './AboutUsSection';
-import ServicesSection from './ServicesSection';
-import PortfolioSection from './PortfolioSection';
-import ContactFormSection from './ContactFormSection';
+import Hero from '../components/Hero/Hero';
+import AboutUs from './AboutUs';
+import Services from './Services';
+import WhyChooseUs from './WhyChooseUs';
+import ContactForm from './ContactForm';
 import { Box } from "@mui/material";
 import { motion } from "framer-motion";
 
@@ -35,27 +35,27 @@ const HomePage = () => {
         {/* Each section is a child with its own animation */}
         <motion.div variants={childVariants}>
           <div id="hero">
-            <HeroSection />
+            <Hero />
           </div>
         </motion.div>
         <motion.div variants={childVariants}>
           <div id="about">
-            <AboutUsSection />
+            <AboutUs />
           </div>
         </motion.div>
         <motion.div variants={childVariants}>
           <div id="services">
-            <ServicesSection />
+            <Services />
           </div>
         </motion.div>
         <motion.div variants={childVariants}>
           <div id="portfolio">
-            <PortfolioSection />
+            <WhyChooseUs />
           </div>
         </motion.div>
         <motion.div variants={childVariants}>
           <div id="contact">
-            <ContactFormSection />
+            <ContactForm />
           </div>
         </motion.div>
       </motion.div>

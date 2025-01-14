@@ -1,16 +1,9 @@
-import { Typography, Container, Grid, Box, Button } from "@mui/material";
+import { Typography, Box, Grid } from "@mui/material";
 import { motion } from "framer-motion";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 import React, { useEffect } from "react"; // Import useEffect for side effects
 
 const WhyChooseUsSection = () => {
-  const navigate = useNavigate(); // Use useNavigate hook for navigation
-
-  const handleLearnMore = () => {
-    navigate("/learn-more"); // Navigate to the LearnMore component
-  };
-
   const benefits = [
     "Expert guidance from experienced consultants",
     "Personalized services tailored to your needs",
@@ -35,7 +28,7 @@ const WhyChooseUsSection = () => {
   }, []); // Empty dependency array ensures this runs once on mount
 
   return (
-    <Container 
+    <Box 
       component="section" 
       sx={{ 
         py: 8, 
@@ -43,8 +36,9 @@ const WhyChooseUsSection = () => {
         backgroundColor: "#e3f2fd", 
         borderRadius: "8px", 
         boxShadow: "0 4px 20px rgba(0,0,0,0.1)", 
-        maxWidth: { xs: '90%', sm: '80%', md: '70%', lg: '100%' }, // Adjust maxWidth for responsiveness
-        mx: "auto" // Center the container
+        width: '100%', // Full width
+        px: 0, // Remove horizontal padding
+        mx: 0 // Remove margin to touch edges
       }}
     >
       <motion.div
@@ -74,30 +68,8 @@ const WhyChooseUsSection = () => {
             </Grid>
           ))}
         </Grid>
-        <Box sx={{ mt: 4 }}>
-          <Button 
-            variant="contained" 
-            color="primary" 
-            size="large" 
-            onClick={handleLearnMore} // Use onClick to handle navigation
-            sx={{ 
-              textTransform: "uppercase", 
-              "&:hover": { 
-                backgroundColor: "#1565c0", 
-                transform: "scale(1.05)", 
-                transition: "0.3s" 
-              },
-              "&:focus": {
-                outline: "2px solid #1976d2", // Focus outline for accessibility
-              }
-            }}
-            aria-label="Learn more about our services"
-          >
-            Learn More
-          </Button>
-        </Box>
       </motion.div>
-    </Container>
+    </Box>
   );
 };
 

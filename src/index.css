@@ -25,3 +25,7 @@ button {
 button:hover {
   transform: translateY(-2px);
 }
+
+html {
+  scroll-behavior: smooth;
+}

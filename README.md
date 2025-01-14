@@ -8,6 +8,8 @@ Care2 Training Consultancy offers expert advice and solutions for students, prof
 - [Usage](#usage)
 - [Components](#components)
 - [Project Structure](#project-structure)
+- [Submission Requirements](#submission-requirements)
+- [SEO, Performance, and Responsiveness](#seo-performance-and-responsiveness)
   
 
 ## Features
@@ -93,6 +95,30 @@ care2-training-consultancy
 ├── package.json
 └── README.md
 
+## Submission Requirements
+1. Code
+-Submit the code via the GitHub repository
+-Follow the Installation steps to run the project locally
+2. Live Demo
+-The application is deployed on Netlify
+-Access the live demo here https://care2-training-consultancy.netlify.app/
+3. Documentation
+-Refer to the SEO, Performance, and Responsiveness section for applied optimizations.
 
- 
+ ## SEO, Performance, and Responsiveness
+ **SEO Techniques**
+-Use of semantic HTML tags (<header>, <main>, <footer>).
+-Proper metadata, including title and meta descriptions, for search engines.
+-Alt text added for all images.
+
+## Responsive Design
+-Mobile-first approach implemented with Material-UI.
+-Media queries adapt layouts for various screen sizes
+-Grid and spacing systems ensure flexibility across devices.
+
+## Performance Optimization
+-Images optimized and served in next-gen formats (e.g., WebP).
+-Media queries adapt layouts for various screen sizes.
+-Grid and spacing systems ensure flexibility across devices.
+
    
